@@ -30,10 +30,14 @@ switch (\TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext()) {
 		$GLOBALS['TYPO3_CONF_VARS']['SYS']['sqlDebug'] = 1;
 		$GLOBALS['TYPO3_CONF_VARS']['SYS']['clearCacheSystem'] = true;
 	break;
-	case 'Testing':
-		// SetEnv TYPO3_CONTEXT Testing
-		// $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = 'dbnamefor_test';
+	case 'Development/Testing':
+		// SetEnv TYPO3_CONTEXT Development/Testing
+		$GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = 't3kit_test';
+		$GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] = 'root';
+		$GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = '1234';
 		$GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] = 'Testing :: t3kit :: TYPO3';
+		$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport'] = 'smtp';
+		$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_server'] = 't3kit_mailhog:1025';
 	break;
 	case 'Development/Demo':
 		// SetEnv TYPO3_CONTEXT Development/Demo

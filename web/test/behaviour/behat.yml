@@ -3,7 +3,7 @@ default:
     '': %paths.base%/context/bootstrap
   extensions:
     Behat\MinkExtension:
-      base_url: http://localhost:8888/
+      base_url: http://test.localhost:8888
       show_cmd: 'open %s'
       default_session: goutte
       goutte: ~
@@ -14,6 +14,12 @@ default:
         - '%paths.base%/features'
       contexts: &contexts
         - FeatureContext
+        - PopupContext
+        - XmlContext
+        - ResponsiveContext
+        - ApplicationContext
+        - MailHogContext:
+            mailhogUrl: 'http://localhost:8025'
       filters:
         tags: ~@skip
 
